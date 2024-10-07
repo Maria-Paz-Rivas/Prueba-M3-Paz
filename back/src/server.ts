@@ -1,11 +1,11 @@
 import express from "express";
-
-import router from "./routes";
+import morgan from "morgan";
+import routes from "./routes/indexRoutes";
 
 const server = express();
 
 server.use(express.json());
-
-server.use(router);
+server.use(morgan("dev"));
+server.use(routes);
 
 export default server;
