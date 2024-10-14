@@ -10,7 +10,7 @@ const router = Router();
 
 router.get("/", getUsers);
 router.get("/:id", getUsersById);
-router.post("/registrer", registerNewUser);
+router.post("/register", registerNewUser);
 router.post("/login", login);
 
 export default router;

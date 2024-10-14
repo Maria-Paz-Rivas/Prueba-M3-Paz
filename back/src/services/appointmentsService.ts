@@ -1,0 +1,68 @@
+import { AppDataSource } from "../config/data-source";
+import { newAppointmentData } from "../dto/newAppointmentData";
+import { Appointment } from "../entities/Appointment";
+import { AppointmentStatus } from "../enums/appointmentStatus";
+import { User } from "../entities/User"; // Asegúrate de importar la entidad 'User'
+
+const appointmentsRepository = AppDataSource.getRepository(Appointment);
+
+const getAllAppointmentsById = async (): Promise<Appointment[]> => {
+  const allAppointments = await appointmentsRepository.find({
+    relations: { user: true },
+  });
+  return allAppointments;
+};
+
+const getAppointmentByIdService = async (
+  id: number
+): Promise<Appointment | null> => {
+  // Cambié 'Appointments' a 'Appointment'
+  const foundApp = await appointmentsRepository.findOne({
+    where: { id },
+    relations: ["user"], // Corrige a "user" en singular
+  });
+
+  return foundApp;
+};
+
+const createNewAppointmentService = async (
+  dataAppointment: newAppointmentData
+): Promise<Appointment | null> => {
+  // Usamos 'Appointment' en lugar de 'undefined'
+  const { date, time, userId } = dataAppointment;
+
+  const userEntity = await AppDataSource.getRepository(User).findOneBy({
+    id: userId,
+  });
+
+  if (userEntity) {
+    const newAppointment = appointmentsRepository.create({
+      date,
+      time,
+      user: userEntity,
+    });
+
+    await appointmentsRepository.save(newAppointment);
+    return newAppointment;
+  } else return null;
+};
+
+const cancelAppointmentService = async (
+  id: number
+): Promise<Appointment | null> => {
+  // Cambié 'Appointments' a 'Appointment'
+  const foundAppointment = await getAppointmentByIdService(id);
+  if (foundAppointment) {
+    foundAppointment.status = AppointmentStatus.CANCELLED;
+
+    await appointmentsRepository.save(foundAppointment);
+  }
+  return foundAppointment;
+};
+
+export {
+  getAllAppointmentsById,
+  getAppointmentByIdService,
+  createNewAppointmentService,
+  cancelAppointmentService,
+};

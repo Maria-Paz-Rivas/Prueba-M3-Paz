@@ -1,29 +1,49 @@
-// import userDto from "../dto/userDto";
-// import IUser from "../interfaces/iUser";
+import { AppDataSource } from "../config/data-source";
+import { NewUserData } from "../dto/newUserData";
+import { Credential } from "../entities/Credential";
+import { User } from "../entities/User";
+import { createCredentialsService } from "./credentialsServices";
 
-// let users: IUser[] = [];
+const UserRepository = AppDataSource.getRepository(User);
 
-// let id: number = 1; // Cambiado a let para incrementar más tarde
+const getAllUsersService = async (): Promise<User[]> => {
+  const usersDB = await UserRepository.find({
+    relations: { appointments: true, credentials: true },
+  });
+  return usersDB;
+};
 
-// export const createUserService = async (userData: userDto): Promise<IUser> => {
-//   const newUser: IUser = {
-//     id,
-//     name: userData.name,
-//     email: userData.email,
-//     active: userData.active,
-//   };
+const getUsersByIdService = async (id: number): Promise<User | null> => {
+  const foundUser = await UserRepository.findOne({
+    where: { id },
+    relations: ["appointments"],
+  });
 
-//   users.push(newUser);
-//   id++; // Incrementa el ID para el próximo usuario
-//   return newUser;
-// };
+  return foundUser;
+};
 
-// export const getUsersService = async (): Promise<IUser[]> => {
-//   return users;
-// };
+const createNewUser = async (userData: NewUserData): Promise<User> => {
+  const { username, password, name, email, birthDate, nDni } = userData;
 
-// export const deleteUserService = async (id: number): Promise<void> => {
-//   users = users.filter((user: IUser) => {
-//     return user.id !== id;
-//   });
-// };
+  const newCredenciales = await createCredentialsService({
+    username,
+    password,
+  });
+
+  const newUser = UserRepository.create({
+    name,
+    email,
+    birthDate,
+    nDni,
+    credentials: newCredenciales, // Asocia las credenciales al nuevo usuario
+  });
+
+  newCredenciales.user = newUser;
+
+  await UserRepository.save(newUser);
+  await AppDataSource.getRepository(Credential).save(newCredenciales);
+
+  return newUser;
+};
+
+export { getAllUsersService, getUsersByIdService, createNewUser };
