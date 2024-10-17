@@ -5,7 +5,6 @@ import {
   registerNewAppointment,
   cancelAppointment,
 } from "../controllers/appointmentsControllers";
-// import { register } from "module";
 
 const router = Router();
 

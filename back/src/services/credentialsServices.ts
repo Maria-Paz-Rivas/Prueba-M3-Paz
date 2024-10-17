@@ -1,43 +1,7 @@
-// import { AppDataSource } from "../config/data-source";
-// import { dataCredentials } from "../dto/dataCredentials";
-// import { Credential } from "../entities/Credential";
-
-// const credentialRepository = AppDataSource.getRepository(Credential);
-
-// const createCredentialsService = async (
-//   credentials: dataCredentials
-// ): Promise<Credential> => {
-//   const { username, password } = credentials;
-
-//   const newCredentials = credentialRepository.create({
-//     username,
-//     password,
-//   });
-
-//   await credentialRepository.save(newCredentials);
-
-//   return newCredentials;
-// };
-
-// Servicio para verificar las credenciales
-
-// Comprobar la contraseña
-// const checkCredentialsService = (credentials: dataCredentials) => {
-//   const { username, password } = credentials;
-
-//   const foundCredentials = credentials.find(
-//     (cred) => cred.username === username
-//   ); //necesitamos que nos devuelva un solo dato
-
-//   if (foundCredentials?.password === password) return foundCredentials?.id;
-//   else throw new Error("Uno o más datos son incorrectos");
-// };
-
-// export { createCredentialsService, checkCredentialsService };
-
 import { AppDataSource } from "../config/data-source";
 import { dataCredentials } from "../dto/dataCredentials";
-import { Credential } from "../entities/Credential";
+import Credential from "../entities/Credential";
+import { User } from "../config/data-source";
 
 // Repositorio para las credenciales
 const credentialRepository = AppDataSource.getRepository(Credential);
@@ -63,18 +27,17 @@ const createCredentialsService = async (
 // Servicio para verificar las credenciales
 const checkCredentialsService = async (
   credentials: dataCredentials
-): Promise<number | null> => {
+): Promise<User | undefined> => {
   const { username, password } = credentials;
 
   // Buscar credenciales en la base de datos
   const foundCredentials = await credentialRepository.findOne({
     where: { username },
+    relations: ["user"],
   });
 
   // Comprobar la contraseña
-  if (foundCredentials && foundCredentials.password === password) {
-    return foundCredentials.id; // Devuelve el ID si la contraseña es correcta
-  } else return 0;
+  if (foundCredentials?.password === password) return foundCredentials?.user;
 };
 
 export { createCredentialsService, checkCredentialsService };

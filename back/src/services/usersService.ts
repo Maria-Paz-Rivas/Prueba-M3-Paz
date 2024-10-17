@@ -1,7 +1,7 @@
 import { AppDataSource } from "../config/data-source";
 import { NewUserData } from "../dto/newUserData";
-import { Credential } from "../entities/Credential";
-import { User } from "../entities/User";
+import Credential from "../entities/Credential";
+import User from "../entities/User";
 import { createCredentialsService } from "./credentialsServices";
 
 const UserRepository = AppDataSource.getRepository(User);
@@ -13,9 +13,24 @@ const getAllUsersService = async (): Promise<User[]> => {
   return usersDB;
 };
 
-const getUsersByIdService = async (id: number): Promise<User | null> => {
+const getUserByWhereClauseService = async (user: {
+  id: number | null;
+  email: string | null;
+}): Promise<User | null> => {
+  const { id, email } = user;
+
+  interface IWhere {
+    id?: number;
+    email?: string;
+  }
+
+  const whereClause: IWhere = {};
+
+  if (id) whereClause.id = id;
+  if (email) whereClause.email = email;
+
   const foundUser = await UserRepository.findOne({
-    where: { id },
+    where: whereClause,
     relations: ["appointments"],
   });
 
@@ -46,4 +61,4 @@ const createNewUser = async (userData: NewUserData): Promise<User> => {
   return newUser;
 };
 
-export { getAllUsersService, getUsersByIdService, createNewUser };
+export { getAllUsersService, getUserByWhereClauseService, createNewUser };

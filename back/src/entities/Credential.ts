@@ -1,15 +1,21 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from "typeorm";
-import { User } from "./User";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  Index,
+} from "typeorm";
+import User from "./User";
 
 @Entity({
   name: "credentials",
-  schema: "policonsultorio", // Nombre de la tabla en la base de datos
 })
-export class Credential {
+class Credential {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
+  @Index({ unique: true })
   username: string;
 
   @Column()
@@ -18,3 +24,4 @@ export class Credential {
   @OneToOne(() => User, (user) => user.credentials)
   user: User;
 }
+export default Credential;

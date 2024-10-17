@@ -7,9 +7,9 @@ import {
   DB_DATABASE,
 } from "./envs";
 
-import { Appointment } from "../entities/Appointment";
-import { Credential } from "../entities/Credential";
-import { User } from "../entities/User";
+import Appointment from "../entities/Appointment";
+import Credential from "../entities/Credential";
+import User from "../entities/User";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -18,8 +18,9 @@ export const AppDataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_DATABASE,
+  // dropSchema: true, //limpia la base de datos
   synchronize: true,
-  logging: true,
+  logging: false, //muestra o no la info en la terminal
   entities: [Appointment, User, Credential],
   subscribers: [],
   migrations: [],
@@ -33,3 +34,4 @@ export const connectDataBase = async () => {
     console.log("Error al conectar con la base de datos:", error);
   }
 };
+export { User };

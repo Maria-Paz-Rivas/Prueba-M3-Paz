@@ -5,21 +5,21 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   OneToMany,
+  Index,
 } from "typeorm";
-import { Credential } from "./Credential";
-import { Appointment } from "./Appointment";
+import Credential from "./Credential";
+import Appointment from "./Appointment";
 
-@Entity({ name: "users", schema: "policonsultorio" })
-export class User {
+@Entity({ name: "users" })
+class User {
   @PrimaryGeneratedColumn() //id numerico incremental
   id: number;
 
-  @Column({
-    length: 100,
-  })
+  @Column({ type: "varchar", default: "default_username", length: 100 })
   name: string;
+  // @Index({ unique: true })
 
-  @Column()
+  @Column({ type: "varchar" })
   email: string;
 
   @Column({ type: "date" })
@@ -27,7 +27,7 @@ export class User {
 
   @Column("integer")
   nDni: number;
-
+  @Index({ unique: true })
   @OneToOne(() => Credential, (credential) => credential.user, {
     cascade: true,
     onDelete: "CASCADE",
@@ -38,3 +38,4 @@ export class User {
   @OneToMany(() => Appointment, (app) => app.user)
   appointments: Appointment[];
 }
+export default User;

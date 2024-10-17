@@ -6,11 +6,9 @@ import "reflect-metadata";
 
 const startServer = async () => {
   try {
-    // Conectar a la base de datos antes de iniciar el servidor
-    await connectDataBase();
+    connectDataBase();
     console.log("Conexión a la base de datos realizada con éxito");
 
-    // Iniciar el servidor
     server.listen(PORT, () => {
       console.log(`Server listening on PORT ${PORT}`);
     });
@@ -19,5 +17,4 @@ const startServer = async () => {
   }
 };
 
-// Llamar a la función para iniciar el servidor
 startServer();

@@ -1,3 +1,34 @@
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { AppointmentStatus } from "../enums/appointmentStatus";
+import User from "./User";
+
+@Entity({
+  name: "appointment",
+})
+class Appointment {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({
+    type: "date",
+  })
+  date: Date;
+
+  @Column()
+  time: string;
+
+  @Column({
+    type: "enum",
+    enum: AppointmentStatus,
+    default: AppointmentStatus.ACTIVE,
+  })
+  status: AppointmentStatus;
+
+  @ManyToOne(() => User, (user) => user.appointments)
+  user: User;
+}
+export default Appointment;
+
 // import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 // import { AppointmentStatus } from "../enums/appointmentStatus";
 // import { User } from "./User";
@@ -29,33 +60,33 @@
 //   user: User;
 // }
 
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { AppointmentStatus } from "../enums/appointmentStatus";
-import { User } from "./User";
+// import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+// import { AppointmentStatus } from "../enums/appointmentStatus";
+// import { User } from "./User";
 
-@Entity({
-  name: "appointments",
-  schema: "policonsultorio", // Asegúrate de que este esquema sea correcto
-})
-export class Appointment {
-  @PrimaryGeneratedColumn()
-  id: number;
+// @Entity({
+//   name: "appointments",
+//   schema: "policonsultorio", // Asegúrate de que este esquema sea correcto
+// })
+// export class Appointment {
+//   @PrimaryGeneratedColumn()
+//   id: number;
 
-  @Column({
-    type: "date",
-  })
-  date: Date;
+//   @Column({
+//     type: "date",
+//   })
+//   date: Date;
 
-  @Column()
-  time: string;
+//   @Column()
+//   time: string;
 
-  @Column({
-    type: "enum",
-    enum: AppointmentStatus,
-    default: AppointmentStatus.ACTIVE,
-  })
-  status: AppointmentStatus;
+//   @Column({
+//     type: "enum",
+//     enum: AppointmentStatus,
+//     default: AppointmentStatus.ACTIVE,
+//   })
+//   status: AppointmentStatus;
 
-  @ManyToOne(() => User, (user) => user.appointments)
-  user: User;
-}
+//   @ManyToOne(() => User, (user) => user.appointments)
+//   user: User;
+// }

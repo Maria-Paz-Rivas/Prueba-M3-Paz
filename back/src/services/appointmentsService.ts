@@ -1,12 +1,12 @@
 import { AppDataSource } from "../config/data-source";
 import { newAppointmentData } from "../dto/newAppointmentData";
-import { Appointment } from "../entities/Appointment";
+import Appointment from "../entities/Appointment";
 import { AppointmentStatus } from "../enums/appointmentStatus";
-import { User } from "../entities/User"; // Asegúrate de importar la entidad 'User'
+import User from "../entities/User";
 
 const appointmentsRepository = AppDataSource.getRepository(Appointment);
 
-const getAllAppointmentsById = async (): Promise<Appointment[]> => {
+const getAllAppointments = async (): Promise<Appointment[]> => {
   const allAppointments = await appointmentsRepository.find({
     relations: { user: true },
   });
@@ -16,7 +16,6 @@ const getAllAppointmentsById = async (): Promise<Appointment[]> => {
 const getAppointmentByIdService = async (
   id: number
 ): Promise<Appointment | null> => {
-  // Cambié 'Appointments' a 'Appointment'
   const foundApp = await appointmentsRepository.findOne({
     where: { id },
     relations: ["user"], // Corrige a "user" en singular
@@ -28,7 +27,6 @@ const getAppointmentByIdService = async (
 const createNewAppointmentService = async (
   dataAppointment: newAppointmentData
 ): Promise<Appointment | null> => {
-  // Usamos 'Appointment' en lugar de 'undefined'
   const { date, time, userId } = dataAppointment;
 
   const userEntity = await AppDataSource.getRepository(User).findOneBy({
@@ -50,7 +48,6 @@ const createNewAppointmentService = async (
 const cancelAppointmentService = async (
   id: number
 ): Promise<Appointment | null> => {
-  // Cambié 'Appointments' a 'Appointment'
   const foundAppointment = await getAppointmentByIdService(id);
   if (foundAppointment) {
     foundAppointment.status = AppointmentStatus.CANCELLED;
@@ -61,7 +58,7 @@ const cancelAppointmentService = async (
 };
 
 export {
-  getAllAppointmentsById,
+  getAllAppointments,
   getAppointmentByIdService,
   createNewAppointmentService,
   cancelAppointmentService,
