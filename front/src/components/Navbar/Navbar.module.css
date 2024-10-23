@@ -1,0 +1,48 @@
+.navbar {
+  background-color: rgb(236, 232, 232); /* Color de fondo */
+  padding: 1rem 2rem; /* Espaciado interno */
+  display: flex; /* Para alinear elementos en fila */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.spanContainer {
+  display: flex; /* Contenedor para los botones */
+  gap: 1rem; /* Espacio entre los botones */
+}
+
+.navbar span {
+  /* background-color: #f0f0f0; Color de fondo de los botones */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(80, 179, 212); /* Color del texto de los botones */
+  padding: 0.5rem 1rem; /* Espaciado interno */
+  cursor: pointer; /* Cambiar cursor al pasar por encima */
+}
+
+.navbar img {
+  margin: 0 2rem; /* 0 arriba/abajo, 1rem a la izquierda y derecha */
+}
+
+.navbar span {
+  position: relative; /* Necesario para posicionar el pseudo-elemento ::after */
+  text-decoration: none; /* Asegúrate de que no haya subrayado por defecto */
+  cursor: pointer;
+}
+
+.navbar span::after {
+  content: ""; /* Pseudo-elemento vacío que será la línea */
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: -5px; /* Ajusta la distancia del subrayado al texto */
+  height: 2px; /* Ajusta el grosor de la línea */
+  background-color: rgb(80, 179, 212); /* Color del subrayado */
+  transform: scaleX(0); /* Por defecto, la línea está oculta */
+  transform-origin: left;
+  transition: transform 0.3s ease; /* Transición suave para el hover */
+}
+
+.navbar span:hover::after {
+  transform: scaleX(1); /* Al hacer hover, se muestra la línea */
+}

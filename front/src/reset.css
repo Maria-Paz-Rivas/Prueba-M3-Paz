@@ -1,0 +1,37 @@
+/* reset.css */
+
+/* Eliminar márgenes y rellenos por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Configurar fuentes básicas */
+html {
+  font-size: 100%; /* Base 16px */
+}
+
+/* Estilo de los elementos */
+body {
+  line-height: 1.5;
+  font-family: Arial, sans-serif; /* Puedes cambiar a la fuente que desees */
+}
+
+/* Asegurar que las imágenes no excedan su contenedor */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilo de enlaces */
+a {
+  text-decoration: none; /* Sin subrayado */
+  color: inherit; /* Heredar color */
+}
+
+/* Listas */
+ul,
+ol {
+  list-style: none; /* Sin estilo de lista */
+}
