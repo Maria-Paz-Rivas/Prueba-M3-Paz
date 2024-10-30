@@ -1,9 +1,10 @@
 .navbar {
-  background-color: rgb(236, 232, 232); /* Color de fondo */
+  background-color: #dadddf; /* Color de fondo */
   padding: 1rem 2rem; /* Espaciado interno */
   display: flex; /* Para alinear elementos en fila */
   justify-content: space-between; /* Espacio entre los elementos */
   align-items: center; /* Centrar verticalmente */
+  
 }
 
 .spanContainer {
@@ -12,7 +13,6 @@
 }
 
 .navbar span {
-  /* background-color: #f0f0f0; Color de fondo de los botones */
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: rgb(80, 179, 212); /* Color del texto de los botones */
@@ -38,11 +38,11 @@
   bottom: -5px; /* Ajusta la distancia del subrayado al texto */
   height: 2px; /* Ajusta el grosor de la línea */
   background-color: rgb(80, 179, 212); /* Color del subrayado */
-  transform: scaleX(0); /* Por defecto, la línea está oculta */
+  transform: scaleX(0); 
   transform-origin: left;
-  transition: transform 0.3s ease; /* Transición suave para el hover */
+  transition: transform 0.3s ease;
 }
 
 .navbar span:hover::after {
-  transform: scaleX(1); /* Al hacer hover, se muestra la línea */
+  transform: scaleX(1); 
 }

@@ -7,21 +7,17 @@
   padding: 0 30px; /* Agrega 20px de espacio en los lados izquierdo y derecho */
 }
 
-.title {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  color: rgb(80, 179, 212);
-}
 
 .paragraph {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 16px;
   color: gray;
 }
 
 .button {
-  background-color: rgb(183, 215, 226);
-  color: gray;
+  background-color: rgb(129, 129, 146);
+  color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
