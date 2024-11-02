@@ -4,33 +4,23 @@
   display: flex; /* Para alinear elementos en fila */
   justify-content: space-between; /* Espacio entre los elementos */
   align-items: center; /* Centrar verticalmente */
-  
 }
 
-.spanContainer {
-  display: flex; /* Contenedor para los botones */
-  gap: 1rem; /* Espacio entre los botones */
+.linkContainer {
+  display: flex; /* Contenedor para los enlaces */
+  gap: 1rem; /* Espacio entre los enlaces */
 }
 
-.navbar span {
+.link {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: rgb(80, 179, 212); /* Color del texto de los botones */
+  color: rgb(80, 179, 212); /* Color del texto de los enlaces */
   padding: 0.5rem 1rem; /* Espaciado interno */
-  cursor: pointer; /* Cambiar cursor al pasar por encima */
-}
-
-.navbar img {
-  margin: 0 2rem; /* 0 arriba/abajo, 1rem a la izquierda y derecha */
-}
-
-.navbar span {
-  position: relative; /* Necesario para posicionar el pseudo-elemento ::after */
   text-decoration: none; /* Asegúrate de que no haya subrayado por defecto */
-  cursor: pointer;
+  position: relative; /* Necesario para posicionar el pseudo-elemento ::after */
 }
 
-.navbar span::after {
+.link::after {
   content: ""; /* Pseudo-elemento vacío que será la línea */
   position: absolute;
   left: 20%;
@@ -43,6 +33,27 @@
   transition: transform 0.3s ease;
 }
 
-.navbar span:hover::after {
+.link:hover::after {
   transform: scaleX(1); 
+}
+
+.navbar img {
+  margin: 0 2rem; /* Espacio a la izquierda y derecha de las imágenes */
+}
+
+/* Estilos para el botón "Salir" */
+.logoutButton {
+  font-family: inherit; /* Hereda la fuente del enlace */
+  font-size: inherit; /* Hereda el tamaño de la fuente del enlace */
+  color: rgb(80, 179, 212); /* Color del texto */
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  padding: 0.5rem 1rem; /* Espaciado interno igual que los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  line-height: 1.5; /* Asegúrate de que coincida con los enlaces */
+}
+
+.logoutButton:hover {
+  text-decoration: underline; /* Opcional: subrayado al pasar el ratón */
 }

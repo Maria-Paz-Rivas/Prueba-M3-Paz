@@ -2,8 +2,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import { validateRegisterForm } from '../../helpers/validateRegisterForm';
 import styles from "./Register.module.css";
+import { Link, useNavigate } from 'react-router-dom';
+import { SLASH } from '../../../../back/src/helpers/routes';
+
 
 const Register = () => {
+    const navigate = useNavigate();
     const [newUserData, setNewUserData] = useState({
         name: '',
         email: '',
@@ -56,17 +60,9 @@ const Register = () => {
             
                 await axios.post('http://localhost:3000/users/register', newUserData);
                 
-                // Restablece el estado
-                setNewUserData({ 
-                    name: '',
-                    email: '',
-                    birthDate: '',
-                    nDni: '',
-                    username: '',
-                    password: '',
-                    repeatpassword: '',
-                });
+              
                 alert("Usuario creado con éxito");
+                navigate(SLASH)
             } catch (error) {
                 console.error('Error en la solicitud:', error);
                 console.error('Datos del error:', error.response?.data);
@@ -176,6 +172,8 @@ const Register = () => {
     
                 <button type="submit" className={styles.button}>Crear Usuario</button>
             </form>
+
+            <p>¿Ya estás registrado? Iniciá sesión haciendo click <Link to= {SLASH} >ACÁ</Link></p>
         </div>
     );
 };

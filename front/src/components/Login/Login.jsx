@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from "./Login.module.css";
+import { useNavigate } from 'react-router-dom';
+import { MY_APPOINTMENTS, USER_REGISTER } from '../../../../back/src/helpers/routes';
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
+    const navigate = useNavigate()
+
     const [user, setUserData] = useState({
         username: '',
         password: ''
@@ -26,7 +32,8 @@ const Login = () => {
 
         try {
              await axios.post('http://localhost:3000/users/login', user);
-          alert("Login exitoso!")
+         navigate(MY_APPOINTMENTS)
+
         } catch (error) {
          
             if (error.status >=400 && error.status <=400) return alert ("Usuario o contraseña incorrecto")
@@ -62,6 +69,9 @@ const Login = () => {
 
                 <button type="submit" className={styles.submit}>Enviar</button>
             </form>
+            <p>
+  ¿No estás registrado? Regístrate haciendo clic <Link to={USER_REGISTER}>ACÁ</Link>.
+</p>
         </div>
     );
 };
