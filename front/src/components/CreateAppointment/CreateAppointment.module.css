@@ -1,0 +1,47 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto; /* 4 columnas para los datos y 1 para el botón */
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 10px; /* Espacio entre columnas */
+    margin-top: 20px; /* Separación superior */
+    padding: 20px 30px; /* Agrega 20px de espacio en la parte superior e inferior y 30px a los lados */
+    border: 1px solid #ccc; /* Borde alrededor del contenedor */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+}
+
+.title {
+    font-size: 1.5em; /* Tamaño de fuente del título */
+    margin-bottom: 10px; /* Espacio inferior del título */
+    grid-column: span 5; /* El título ocupa todas las columnas */
+}
+
+.paragraph {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 16px; /* Tamaño de fuente */
+    color: gray; /* Color del texto */
+}
+
+.input {
+    margin: 10px 0; /* Espacio vertical entre entradas */
+    padding: 8px; /* Espacio interno de la entrada */
+    width: 100%; /* Ancho completo */
+    border: 1px solid #ccc; /* Borde de la entrada */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+.button {
+    background-color:red; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espacio interno del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 14px; /* Tamaño de fuente */
+    justify-self: start; /* Alinea el botón a la izquierda */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Color de fondo en hover */
+}

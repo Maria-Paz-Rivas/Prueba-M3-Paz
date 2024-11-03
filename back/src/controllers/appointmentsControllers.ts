@@ -3,6 +3,7 @@ import {
   cancelAppointmentService,
   createNewAppointmentService,
   getAllAppointments,
+  getAllAppointmentsByUserId, // Asegúrate de importar este servicio
   getAppointmentByIdService,
 } from "../services/appointmentsService";
 
@@ -11,7 +12,10 @@ const getAppointments = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const allApp = await getAllAppointments();
+    const userId = req.query.userId; // Obtener el ID del usuario de los parámetros de consulta
+    const allApp = userId
+      ? await getAllAppointmentsByUserId(Number(userId)) // Obtener citas por ID de usuario
+      : await getAllAppointments(); // O obtener todas las citas si no hay userId
 
     return allApp.length
       ? res.status(200).json(allApp)
@@ -60,6 +64,8 @@ const registerNewAppointment = async (
   }
 };
 
+
+
 const cancelAppointment = async (
   req: Request,
   res: Response
@@ -69,7 +75,7 @@ const cancelAppointment = async (
     const cancelApp = await cancelAppointmentService(Number(id));
     return cancelApp
       ? res.status(200).json({ message: "Turno cancelado" })
-      : res.status(404).json({ message: "el turno no existe" });
+      : res.status(404).json({ message: "El turno no existe" });
   } catch (error) {
     return res.status(500).json(error);
   }

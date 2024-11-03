@@ -14,3 +14,6 @@ router.post("/schedule", registerNewAppointment);
 router.put("/cancel/:id", cancelAppointment);
 
 export default router;
+
+
+
