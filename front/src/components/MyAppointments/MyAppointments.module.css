@@ -1,8 +1,14 @@
 .title {
+  background-color: whitesmoke;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
-  color: gray;
+   color: #006085;
   margin-left: 20px;
   margin-top: 30px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  padding-top: 40px;
+  line-height: 2; /* Ajusta este valor para más o menos separación */
 }
+

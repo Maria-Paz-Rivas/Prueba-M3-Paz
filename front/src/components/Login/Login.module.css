@@ -55,7 +55,7 @@
 }
 
 .errorMessage {
-    color: red; /* Color de los mensajes de error */
+    color: whitesmoke; /* Color de los mensajes de error */
     font-size: 0.9rem; /* Tamaño de fuente */
     margin-top: 0.2rem; /* Espacio superior */
 }

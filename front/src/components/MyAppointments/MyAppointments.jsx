@@ -293,7 +293,7 @@ const MyAppointments = () => {
 
     return (
         <>
-            <h2 className={styles.title}>Turnos Registrados</h2>
+            <h2 className={styles.title}>Sus turnos registrados</h2>
             {appointments.length > 0 ? (
                 appointments.map((app) => (
                     <MyAppointment

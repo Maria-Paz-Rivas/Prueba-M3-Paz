@@ -1,47 +1,42 @@
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr auto; /* 4 columnas para los datos y 1 para el botón */
-    align-items: center; /* Alinea los elementos verticalmente */
-    gap: 10px; /* Espacio entre columnas */
-    margin-top: 20px; /* Separación superior */
-    padding: 20px 30px; /* Agrega 20px de espacio en la parte superior e inferior y 30px a los lados */
-    border: 1px solid #ccc; /* Borde alrededor del contenedor */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Fondo claro */
+.form {
+  background-color: #f5f5f5; /* Fondo ligero para el formulario */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 2rem; /* Espaciado interno */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 2rem auto; /* Centrar el formulario en la página */
 }
 
-.title {
-    font-size: 1.5em; /* Tamaño de fuente del título */
-    margin-bottom: 10px; /* Espacio inferior del título */
-    grid-column: span 5; /* El título ocupa todas las columnas */
+h2 {
+  color: rgb(80, 179, 212); /* Mismo color que en los enlaces */
+  margin-bottom: 1rem; /* Espacio debajo del título */
 }
 
-.paragraph {
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-size: 16px; /* Tamaño de fuente */
-    color: gray; /* Color del texto */
+input[type="date"],
+select {
+  width: 100%; /* Ocupa el ancho completo del formulario */
+  padding: 0.5rem; /* Espaciado interno */
+  margin-bottom: 1rem; /* Espacio entre campos */
+  border: 1px solid #ccc; /* Borde ligero */
+  border-radius: 4px; /* Bordes redondeados */
 }
 
-.input {
-    margin: 10px 0; /* Espacio vertical entre entradas */
-    padding: 8px; /* Espacio interno de la entrada */
-    width: 100%; /* Ancho completo */
-    border: 1px solid #ccc; /* Borde de la entrada */
-    border-radius: 4px; /* Bordes redondeados */
+input[type="date"]:focus,
+select:focus {
+  border-color: rgb(80, 179, 212); /* Borde azul al hacer foco */
+  outline: none; /* Sin contorno al hacer foco */
 }
 
-.button {
-    background-color:red; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 5px 10px; /* Espacio interno del botón */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    font-size: 14px; /* Tamaño de fuente */
-    justify-self: start; /* Alinea el botón a la izquierda */
+button {
+  background-color: rgb(80, 179, 212); /* Color de fondo del botón */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 0.75rem; /* Espaciado interno */
+  cursor: pointer; /* Cambiar cursor al pasar por encima */
+  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
 }
 
-.button:hover {
-    background-color: #0056b3; /* Color de fondo en hover */
+button:hover {
+  background-color: #66c2d4; /* Color más claro al pasar el ratón */
 }

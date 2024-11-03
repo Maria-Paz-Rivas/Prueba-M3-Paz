@@ -175,6 +175,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/quienes-somos" className={styles.link}>Quienes somos</Link>
+            <Link to="/contacto" className={styles.link}>Contacto</Link>
             {/* Solo mostrar "Registrate" e "Iniciar Sesión" si no hay un usuario logueado */}
             {!user && (
               <>

@@ -6,6 +6,7 @@
   align-items: center; /* Centrar verticalmente */
 }
 
+
 .linkContainer {
   display: flex; /* Contenedor para los enlaces */
   gap: 1rem; /* Espacio entre los enlaces */
