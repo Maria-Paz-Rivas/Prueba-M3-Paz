@@ -111,6 +111,7 @@ import { AuthProvider } from './context/AuthContext';
 import { AppointmentsProvider } from './context/AppointmentsContext'; 
 import AboutUs from "./components/AboutUs/AboutUs";
 import styles from './App.module.css'; // Importa el CSS Module
+import Footer from "./components/Footer/Footer"
 
 function App() {
   return (
@@ -118,6 +119,7 @@ function App() {
       <AuthProvider> 
         <AppointmentsProvider>
           <Navbar />
+      
           <Routes>
             <Route path={SLASH} element={<Login />} />
             <Route path={USER_REGISTER} element={<RegisterView />} />
@@ -126,8 +128,11 @@ function App() {
             <Route path={ABOUT_US} element={<AboutUs />} />
             <Route path={CONTACT} element={<Contact />} />
           </Routes>
+    
+          <Footer /> 
         </AppointmentsProvider>
       </AuthProvider>
+
     </div>
   );
 }
