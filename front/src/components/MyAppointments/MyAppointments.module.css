@@ -1,14 +1,115 @@
-.title {
+/* .title {
   background-color: whitesmoke;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
-   color: #006085;
+  color: #006085;
   margin-left: 20px;
   margin-top: 30px;
   padding-left: 20px;
   padding-bottom: 30px;
   padding-top: 40px;
   line-height: 2; /* Ajusta este valor para más o menos separación */
+/* }
+
+.description {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color:#006085;
+} */ 
+
+.container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 
+.title {
+  font-size: 24px;
+  color:  #006085;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color:  #dadddf;
+  text-align: center;
+}
+
+.appointmentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.noAppointments {
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  font-style: italic;
+}
+
+.appointmentCard {
+  background-color: whitesmoke;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid #00796b;
+}
+
+.appointmentInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.appointmentInfo span {
+  font-size: 16px;
+  color: #555;
+}
+
+.appointmentInfo .date {
+  font-weight: bold;
+  color: #00796b;
+}
+
+.status {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status.pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status.confirmed {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status.cancelled {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancelButton {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cancelButton:hover {
+  background-color: #d32f2f;
+}

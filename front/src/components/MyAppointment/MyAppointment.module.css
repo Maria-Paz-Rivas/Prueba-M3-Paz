@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr auto; /* 4 columnas para los datos y 1 para el botón */
   align-items: center; /* Alinea los elementos verticalmente */
-  gap: 10px; /* Espacio entre columnas */
+  gap: 15px; /* Espacio entre columnas */
   margin-top: 20px; /* Separación superior */
   padding: 0 30px; /* Agrega 20px de espacio en los lados izquierdo y derecho */
 }
